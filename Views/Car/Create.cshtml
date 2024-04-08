@@ -1,0 +1,45 @@
+﻿@using CarShops.Data.Enum
+@using CarShops.ViewModels
+@model CreateCarViewModel
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <!--<input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />-->
+    <div class="form-group">
+        <label asp-for="Name">Название</label>
+        <input asp-for="Name" class="form-control" placeholder="Введите имя">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDesc">Слоган</label>
+        <input asp-for="ShortDesc" class="form-control" placeholder="Введите слоган">
+        <span asp-validation-for="ShortDesc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LongDesc">Описание</label>
+        <input asp-for="LongDesc" class="form-control" placeholder="Введите описание">
+        <span asp-validation-for="LongDesc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="categoryID">Введите категорию</label>
+        <select asp-for="categoryID" asp-items="@Html.GetEnumSelectList<CarCategory>()" class="form-control">
+            <option>--Select--</option>
+        </select>
+        <span asp-validation-for="LongDesc" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Цена</label>
+        <input asp-for="Price" class="form-control" placeholder="Введите цену">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Изображение</label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="Введите картинку">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-check">
+        <label asp-for="Available">Есть в наличии</label>
+        <input class="form-check-input" type="checkbox">
+        <span asp-validation-for="Available" class="btn-check"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
